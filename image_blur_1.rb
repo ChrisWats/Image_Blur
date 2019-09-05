@@ -6,15 +6,18 @@ class Image
   end
 
   def output_image
-    string = ""
-    @image.each_index do |line|
-      subarray = @image[line]
-      subarray.each_index do |i|
-        string = string + @image[line][i].to_s
-      end
-      puts string
-      string = ""
+    @image.each do |line|
+      puts self.string_array(line)
     end
+  end
+
+  def string_array(array)
+    string = ""
+
+    array.each do |i|
+      string += i.to_s
+    end
+    return string
   end
 
 end
