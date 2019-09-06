@@ -20,7 +20,50 @@ class Image
     return string
   end
 
+  def transform
+    # Takes the image and changes a 0 next to a 1 into a 1.
+    temp = @image
+    @image.each_index do |line|
+      subarray = @image[line]
+      
+      subarray.each_index do |i|
+        
+        if self.check_one(@image[line][i]) 
+            
+            # Change the 0 to the left into a 1.
+            if i != 0
+              temp[line][i - 1] = 1
+            end
+            
+            # Change the 0 to the right into a 1.
+            if i != 3
+              temp[line][i + 1] = 1
+            end
+            
+            # Change the 0 below into a 1.
+            #if i != 3
+             # temp[line + 1][i] = 1
+            #end
+            
+
+            # Change the 0 above into a 1.
+            if line != 0
+              temp[line - 1][i] = 1
+            end
+        end
+      end
+    end
+    # @image = temp
+  end
+
+  def check_one(i)
+    # Check for a 1 in an array
+    return i == 1
+  end
 end
 
 image = Image.new([[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 0, 0]])
+image.output_image
+puts "----"
+image.transform
 image.output_image
