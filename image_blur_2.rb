@@ -55,8 +55,6 @@ class Image
         end
       end
     end
-    puts "Temp is #{temp}"
-    puts "image is #{@image}"
     @image = temp
   end
 
